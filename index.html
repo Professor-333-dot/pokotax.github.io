@@ -1,30 +1,164 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Video Website</title>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: lightblue;
+            font-family: 'Poppins', sans-serif;
+            background-color: #e3f2fd; /* Light blue background */
+            margin: 0;
+            padding: 30px 20px;
+            color: #333;
+        }
+        header {
             text-align: center;
-            font-family: Arial;
-            padding-top: 100px;
+            margin-bottom: 30px;
         }
-
-        h1 {
-            color: darkblue;
-            font-size: 40px;
+        header h1 {
+            color: #0d47a1;
+            margin-bottom: 5px;
+            font-weight: 600;
         }
-
-        p {
-            color: black;
-            font-size: 22px;
+        header p {
+            color: #555;
+            font-weight: 300;
+        }
+        .search-container {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .search-container input {
+            padding: 12px 15px;
+            width: 300px;
+            border: 1px solid #90caf9;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            outline: none;
+            background-color: #fff;
+        }
+        .search-container input:focus {
+            border-color: #1976d2;
+            box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
+        }
+        .search-container button {
+            padding: 12px 20px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 5px;
+            transition: background-color 0.2s;
+        }
+        .search-container button:hover {
+            background-color: #115293;
+        }
+        .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .video-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            width: 300px;
+        }
+        .video-card h3 {
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #222;
+        }
+        video {
+            width: 100%;
+            border-radius: 6px;
+            background-color: #000;
+        }
+        .download-btn {
+            display: block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #2e7d32;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+        .download-btn:hover {
+            background-color: #1b5e20;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Website!</h1>
-    <p>Congratulations! My first website is working.</p>
+
+    <header>
+        <h1>Welcome to My Website</h1>
+        <p>Stream and download your favorite videos easily!</p>
+    </header>
+
+    <!-- Search Section -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search videos..." onkeyup="searchVideos()">
+        <button onclick="searchVideos()">Search</button>
+    </div>
+
+    <!-- Video Grid Section -->
+    <div class="video-grid" id="videoGrid">
+        
+        <!-- Video Card 1 -->
+        <div class="video-card" data-title="Sample Nature Video">
+            <h3>Sample Nature Video</h3>
+            <video controls>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <a href="https://www.w3schools.com/html/mov_bbb.mp4" class="download-btn" download>Download Video</a>
+        </div>
+
+        <!-- Video Card 2 (You can copy-paste this block to add more videos) -->
+        <div class="video-card" data-title="Coding Tutorial">
+            <h3>Coding Tutorial</h3>
+            <video controls>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <a href="https://www.w3schools.com/html/mov_bbb.mp4" class="download-btn" download>Download Video</a>
+        </div>
+
+    </div>
+
+    <!-- JavaScript for Search Filter -->
+    <script>
+        function searchVideos() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('video-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "block";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
-
+       
