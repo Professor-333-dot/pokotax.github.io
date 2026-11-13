@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Video Website</title>
+    <title>Poko Tax</title>
     <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -13,10 +13,45 @@
             margin: 0;
             padding: 30px 20px;
             color: #333;
-        }
-        header {
             text-align: center;
+        }
+
+        /* Intro Section Style */
+        #intro-section {
+            margin-top: 120px;
+        }
+        #intro-section h1 {
+            font-size: 42px;
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        #intro-section p {
+            color: #555;
+            font-size: 16px;
             margin-bottom: 30px;
+            font-weight: 300;
+        }
+        .get-started-btn {
+            padding: 14px 32px;
+            background-color: #1976d2;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .get-started-btn:hover {
+            background-color: #115293;
+        }
+
+        /* Main Section Style (Hidden by default) */
+        #main-section {
+            display: none;
         }
         header h1 {
             color: #0d47a1;
@@ -28,8 +63,7 @@
             font-weight: 300;
         }
         .search-container {
-            margin-bottom: 40px;
-            text-align: center;
+            margin: 30px 0;
         }
         .search-container input {
             padding: 12px 15px;
@@ -75,6 +109,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             width: 300px;
+            text-align: left;
         }
         .video-card h3 {
             font-size: 16px;
@@ -107,44 +142,60 @@
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to My Website</h1>
-        <p>Stream and download your favorite videos easily!</p>
-    </header>
-
-    <!-- Search Section -->
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search videos..." onkeyup="searchVideos()">
-        <button onclick="searchVideos()">Search</button>
+    <!-- 1. Intro Section -->
+    <div id="intro-section">
+        <h1>Welcome to Poko Tax</h1>
+        <p>Your ultimate destination for tax guides and video resources.</p>
+        <button class="get-started-btn" onclick="showMainSection()">Get Started</button>
     </div>
 
-    <!-- Video Grid Section -->
-    <div class="video-grid" id="videoGrid">
-        
-        <!-- Video Card 1 -->
-        <div class="video-card" data-title="Sample Nature Video">
-            <h3>Sample Nature Video</h3>
-            <video controls>
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <a href="https://www.w3schools.com/html/mov_bbb.mp4" class="download-btn" download>Download Video</a>
+    <!-- 2. Main Section (Search & Videos - Hidden initially) -->
+    <div id="main-section">
+        <header>
+            <h1>Poko Tax Video Hub</h1>
+            <p>Search and download your required videos easily!</p>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search videos..." onkeyup="searchVideos()">
+            <button onclick="searchVideos()">Search</button>
         </div>
 
-        <!-- Video Card 2 (You can copy-paste this block to add more videos) -->
-        <div class="video-card" data-title="Coding Tutorial">
-            <h3>Coding Tutorial</h3>
-            <video controls>
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <a href="https://www.w3schools.com/html/mov_bbb.mp4" class="download-btn" download>Download Video</a>
-        </div>
+        <!-- Video Grid Section -->
+        <div class="video-grid" id="videoGrid">
+            
+            <!-- Video Card 1 -->
+            <div class="video-card" data-title="Poko Tax Tutorial">
+                <h3>Poko Tax Tutorial</h3>
+                <video controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="https://www.w3schools.com/html/mov_bbb.mp4" class="download-btn" download>Download Video</a>
+            </div>
 
+            <!-- Video Card 2 -->
+            <div class="video-card" data-title="Tax Filing Guide">
+                <h3>Tax Filing Guide</h3>
+                <video controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="https://www.w3schools.com/html/mov_bbb.mp4" class="download-btn" download>Download Video</a>
+            </div>
+
+        </div>
     </div>
 
-    <!-- JavaScript for Search Filter -->
+    <!-- JavaScript to Handle Screen Switch and Search -->
     <script>
+        function showMainSection() {
+            // Hide intro and show main section
+            document.getElementById('intro-section').style.display = 'none';
+            document.getElementById('main-section').style.display = 'block';
+        }
+
         function searchVideos() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('video-card');
@@ -161,4 +212,5 @@
     </script>
 </body>
 </html>
+
        
